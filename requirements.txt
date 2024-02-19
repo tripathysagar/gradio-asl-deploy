@@ -1,1 +1,4 @@
-
+fastai==2.7.13
+fastcore==1.5.29
+pytorch-ignite==0.4.13
+pytorch-lightning==2.1.3
