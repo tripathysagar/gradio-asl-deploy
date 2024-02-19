@@ -34,8 +34,7 @@ def label_to_class(f:str)->L:
 # In[ ]:
 
 
-model_path = Path('./model/model_asl_sign01.pkl')
-learner = load_learner('./model/model_asl_sign01.pkl')
+learner = load_learner('./model/model_asl_sign03.pkl')
 
 
 # In[ ]:
@@ -47,7 +46,7 @@ import os
 
 def pred_image(image):
     dict = {}
-    for i, j in zip(learner.dls.vocab, learner.predict(images_lis[0])[2]):
+    for i, j in zip(learner.dls.vocab, learner.predict(images_lis[i])[2]):
         dict[i] = round(j.item(), 2)
     
     return dict
@@ -56,7 +55,7 @@ def pred_image(image):
 demo = gr.Interface(
     fn=pred_image,
     inputs='image',
-    outputs=gr.Label(num_top_classes=29),
+    outputs=gr.Label(num_top_classes=28),
     examples=images_lis,
 )
 
